@@ -6,6 +6,7 @@ import { BrandsSection } from "@/components/landing/brands-section"
 import { FaqSection } from "@/components/landing/faq-section"
 import { Footer } from "@/components/landing/footer"
 import { SectionNavigator } from "@/components/landing/section-navigator"
+import { FeaturesSection } from "@/components/landing/features-section"
 
 export default function Home() {
   return (
@@ -19,11 +20,14 @@ export default function Home() {
       <section id="pricing">
         <PricingSection />
       </section>
-      <section id="insights">
-        <InsightsSection />
+      <section id="features">
+        <FeaturesSection />
       </section>
       <section id="brands" className="border-t-2 border-[#d6d6d6]">
         <BrandsSection />
+      </section>
+      <section id="insights">
+        <InsightsSection />
       </section>
       <section id="faq" className="border-t-2 border-[#d6d6d6]">
         <FaqSection />
