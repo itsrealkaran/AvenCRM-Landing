@@ -43,10 +43,10 @@ export function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Logo />
+                <Logo variant="black"/>
               </motion.div>
               <motion.div
-                className='text-[#5932ea] text-[1rem] md:text-[1.2rem] flex gap-[2px] items-end font-bold'
+                className='text-[#000000] text-[1rem] md:text-[1.2rem] flex gap-[2px] items-end font-bold'
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}

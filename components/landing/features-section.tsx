@@ -40,18 +40,6 @@ const features: Feature[] = [
     image: "https://v0.blob.com/email-composition.png"
   },
   {
-    id: "content",
-    icon: FileText,
-    title: "Dynamic Content Generation",
-    description: "Create high-quality, SEO-optimized content for your marketing needs. Our AI analyzes your brand voice and target audience to deliver compelling copy.",
-    benefits: [
-      "Generate blog posts, social media content, and ad copy in minutes",
-      "Ensure consistent messaging across all platforms",
-      "Boost engagement with tailored content for different audience segments"
-    ],
-    image: "https://v0.blob.com/content-generation.png"
-  },
-  {
     id: "formula",
     icon: Calculator,
     title: "Intelligent Formula Builder",
@@ -74,18 +62,6 @@ const features: Feature[] = [
       "Increase team productivity by focusing on high-value activities"
     ],
     image: "https://v0.blob.com/workflow-automation.png"
-  },
-  {
-    id: "collaboration",
-    icon: Users,
-    title: "Team Collaboration Hub",
-    description: "Foster seamless teamwork with our integrated collaboration tools. Share insights, delegate tasks, and stay aligned on goals in real-time.",
-    benefits: [
-      "Improve team communication and reduce email overload",
-      "Increase project visibility and accountability",
-      "Enhance decision-making with centralized information"
-    ],
-    image: "https://v0.blob.com/team-collaboration.png"
   }
 ]
 
@@ -123,14 +99,14 @@ export function FeaturesSection() {
   }, [activeFeature, handleFeatureChange])
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50">
+    <section className="py-24 px-4 bg-slate-50">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-center text-gray-900">
           Powerful Features to Supercharge Your Workflow
         </h2>
-        <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
+        {/* <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
           Discover how AvenCRM's cutting-edge features can transform your business operations, boost productivity, and drive growth.
-        </p>
+        </p> */}
         <div className="grid lg:grid-cols-[1.2fr,1fr] gap-8 lg:gap-16 items-center">
           {/* Left Column - Feature List with Dropdowns */}
           <div className="space-y-4">
@@ -166,7 +142,7 @@ export function FeaturesSection() {
                         className="px-6 pb-6 space-y-4"
                       >
                         <p className="text-gray-600 text-lg leading-relaxed">{feature.description}</p>
-                        <ul className="space-y-3">
+                        {/* <ul className="space-y-3">
                           {feature.benefits.map((benefit, index) => (
                             <li key={index} className="flex items-start gap-3">
                               <svg 
@@ -185,7 +161,7 @@ export function FeaturesSection() {
                               <span className="text-gray-600 text-base">{benefit}</span>
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
                       </motion.div>
                     )}
                   </AnimatePresence>

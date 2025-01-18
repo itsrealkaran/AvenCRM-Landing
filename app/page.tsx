@@ -23,13 +23,13 @@ export default function Home() {
       <section id="features">
         <FeaturesSection />
       </section>
-      <section id="brands" className="border-t-2 border-[#d6d6d6]">
+      <section id="brands">
         <BrandsSection />
       </section>
       <section id="insights">
         <InsightsSection />
       </section>
-      <section id="faq" className="border-t-2 border-[#d6d6d6]">
+      <section id="faq">
         <FaqSection />
       </section>
       <Footer />
