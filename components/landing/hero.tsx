@@ -38,17 +38,17 @@ export function Hero() {
         animate="visible"
       >
         <motion.h1 
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold max-w-4xl mx-auto leading-tight tracking-tight"
+          className="text-3xl text-[#1a1a1b] sm:text-4xl md:text-5xl lg:text-6xl font-bold max-w-4xl mx-auto leading-tight tracking-tight"
           variants={itemVariants}
         >
-          The CRM that's simple to set up and easy to use
+          CRM that empowers your real estate success
         </motion.h1>
         
         <motion.p 
-          className="mt-6 text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto"
+          className="mt-6 text-lg sm:text-xl text-[#4a4a4b] max-w-2xl mx-auto"
           variants={itemVariants}
         >
-          Aven CRM is a fully customizable, dedicated sales platform. No code needed.
+          Streamline your property deals, boost client relationships, and skyrocket your real estate business.
         </motion.p>
         
         <motion.div 
@@ -64,7 +64,7 @@ export function Hero() {
         </motion.div>
         
         <motion.p 
-          className="mt-4 text-sm text-gray-500"
+          className="mt-4 text-sm text-[#6a6a6b]"
           variants={itemVariants}
         >
           Get full access • No credit card needed

@@ -14,8 +14,7 @@ const sections: Section[] = [
   { id: "hero", name: "Top" },
   { id: "video-section", name: "Overview" },
   { id: "pricing", name: "Pricing" },
-  { id: "video-section", name: "Features" },
-  { id: "brands", name: "Brands" },
+  { id: "features", name: "Features" },
   { id: "insights", name: "Insights" },
   { id: "faq", name: "FAQ" }
 ]
@@ -25,37 +24,45 @@ export function SectionNavigator() {
   const [isVisible, setIsVisible] = useState(true)
 
   useEffect(() => {
+    document.documentElement.style.scrollBehavior = 'smooth';
+    return () => {
+      document.documentElement.style.scrollBehavior = '';
+    };
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2
-      const sectionElements = sections.map(section => document.getElementById(section.id))
+      const scrollPosition = window.scrollY + window.innerHeight / 2;
+      const sectionElements = sections.map(section => document.getElementById(section.id));
       
+      let newCurrentSection = 0;
       for (let i = sectionElements.length - 1; i >= 0; i--) {
-        const section = sectionElements[i]
+        const section = sectionElements[i];
         if (section && scrollPosition >= section.offsetTop) {
-          setCurrentSection(i)
-          break
+          newCurrentSection = i;
+          break;
         }
       }
+      
+      setCurrentSection(newCurrentSection);
 
       // Hide button when reaching the last section
-      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100) {
-        setIsVisible(false)
-      } else {
-        setIsVisible(true)
-      }
-    }
+      const isLastSectionVisible = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 100;
+      setIsVisible(!isLastSectionVisible);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Call once to set initial state
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const scrollToNextSection = () => {
-    const nextIndex = (currentSection + 1) % sections.length
-    const nextSection = document.getElementById(sections[nextIndex].id)
+    const nextIndex = (currentSection + 1) % sections.length;
+    const nextSection = document.getElementById(sections[nextIndex].id);
     if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" })
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-  }
+  };
 
   return (
     <AnimatePresence>
@@ -75,9 +82,7 @@ export function SectionNavigator() {
             <span className="mr-2">
               {sections[(currentSection + 1) % sections.length].name}
             </span>
-            <ChevronDown className={`w-3 h-3 transition-transform group-hover:translate-y-0.5 ${
-              currentSection === sections.length - 1 ? 'rotate-180' : ''
-            }`} />
+            <ChevronDown className="w-3 h-3 transition-transform group-hover:translate-y-0.5" />
           </Button>
         </motion.div>
       )}

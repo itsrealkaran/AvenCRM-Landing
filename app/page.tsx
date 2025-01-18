@@ -23,9 +23,9 @@ export default function Home() {
       <section id="features">
         <FeaturesSection />
       </section>
-      <section id="brands">
+      {/* <section id="brands">
         <BrandsSection />
-      </section>
+      </section> */}
       <section id="insights">
         <InsightsSection />
       </section>
