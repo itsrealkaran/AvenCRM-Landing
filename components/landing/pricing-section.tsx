@@ -177,7 +177,7 @@ export function PricingSection() {
   const plans = isIndividual ? individualPlans : companyPlans
 
   return (
-    <div className="py-24 px-4 bg-gradient-to-b from-gray-50 to-white">
+    <div className="py-16 px-4 bg-gradient-to-b from-gray-50 to-white">
       <motion.div 
         className="max-w-7xl mx-auto"
         variants={containerVariants}
@@ -186,11 +186,9 @@ export function PricingSection() {
         viewport={{ once: true }}
       >
         <div className="text-center mb-14">
-          <motion.div variants={itemVariants} className="flex items-center justify-center">
-            <span className="text-sm font-bold text-[#303030]">PRICING</span>
+          <motion.div variants={itemVariants} className="flex mb-4 items-center justify-center">
+            <span className="text-sm font-medium text-[#6f6c90] tracking-tight">PRICING</span>
           </motion.div>
-          <div className="mb-4"> {/* Removed the flex justify-end div */}
-          </div>
           <motion.h2 
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-[#222222] mb-6"

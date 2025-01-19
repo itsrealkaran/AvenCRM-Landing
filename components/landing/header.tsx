@@ -8,9 +8,9 @@ import Logo from "../logo"
 import { Menu, X } from 'lucide-react'
 
 const navItems = [
-  { name: "Features", href: "#features" },
-  { name: "Pricing", href: "#pricing" },
-  { name: "About", href: "#about" },
+  { name: "Features", href: "/features" },
+  { name: "Pricing", href: "/pricing" },
+  { name: "Insights", href: "/insights" },
 ]
 
 export function Header() {

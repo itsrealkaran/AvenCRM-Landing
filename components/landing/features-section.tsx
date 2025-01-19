@@ -99,8 +99,11 @@ export function FeaturesSection() {
   }, [activeFeature, handleFeatureChange])
 
   return (
-    <section className="py-24 px-4 bg-slate-50">
+    <section className="py-16 px-4 bg-slate-50">
       <div className="max-w-5xl mx-auto">
+        <motion.div className="flex mb-4 items-center justify-center">
+          <span className="text-sm font-medium text-[#6f6c90] tracking-tight">FEATURES</span>
+        </motion.div>
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-center text-gray-900">
           Powerful Features to Supercharge Your Workflow
         </h2>
