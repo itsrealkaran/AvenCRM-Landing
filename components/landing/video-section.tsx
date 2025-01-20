@@ -15,7 +15,7 @@ const growthData = [
 
 export function VideoSection() {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-20">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-24">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-[1.5fr,1fr] gap-8">
           {/* Main Content */}
@@ -66,7 +66,7 @@ export function VideoSection() {
           </div>
 
           {/* Side Content */}
-          <div className="flex flex-col md:gap-6 justify-between">
+          <div className="flex flex-col gap-6 justify-between">
             <Card className="p-6">
               <h3 className="font-semibold mb-4">Recent Activities</h3>
               <div className="space-y-4">
