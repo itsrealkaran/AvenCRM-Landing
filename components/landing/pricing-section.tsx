@@ -193,7 +193,7 @@ export function PricingSection() {
             variants={itemVariants}
             className="text-4xl md:text-5xl font-bold text-[#222222] mb-6"
           >
-            Simple, transparent pricing
+            Simple & Transparent Pricing
           </motion.h2>
           
           <motion.p 

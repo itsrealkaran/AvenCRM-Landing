@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { ChevronRight, Sparkles, Mail, FileText, Calculator, Zap, Users } from 'lucide-react'
+import { ChevronRight, Sparkles, Mail, FileText, Calculator, Zap, Users } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
 interface Feature {
   id: string
@@ -19,73 +21,80 @@ const features: Feature[] = [
     id: "task-generation",
     icon: Sparkles,
     title: "AI-Powered Task Generation",
-    description: "Revolutionize your workflow with our AI-driven task generation. Transform meeting notes, emails, and ideas into actionable tasks instantly.",
+    description:
+      "Revolutionize your workflow with our AI-driven task generation. Transform meeting notes, emails, and ideas into actionable tasks instantly.",
     benefits: [
       "Save up to 3 hours per week on task management",
       "Ensure no action items slip through the cracks",
-      "Prioritize tasks automatically based on urgency and impact"
+      "Prioritize tasks automatically based on urgency and impact",
     ],
-    image: "https://v0.blob.com/task-generation.png"
+    image: "https://v0.blob.com/task-generation.png",
   },
   {
     id: "email",
     icon: Mail,
     title: "Smart Email Composition",
-    description: "Craft perfect emails in seconds with our AI-assisted email composer. From cold outreach to follow-ups, hit the right tone every time.",
+    description:
+      "Craft perfect emails in seconds with our AI-assisted email composer. From cold outreach to follow-ups, hit the right tone every time.",
     benefits: [
       "Reduce email writing time by up to 70%",
       "Improve response rates with optimized language",
-      "Maintain consistent brand voice across all communications"
+      "Maintain consistent brand voice across all communications",
     ],
-    image: "https://v0.blob.com/email-composition.png"
+    image: "https://v0.blob.com/email-composition.png",
   },
   {
     id: "formula",
     icon: Calculator,
     title: "Intelligent Formula Builder",
-    description: "Simplify complex calculations with our natural language formula builder. Turn your requirements into accurate formulas without any coding knowledge.",
+    description:
+      "Simplify complex calculations with our natural language formula builder. Turn your requirements into accurate formulas without any coding knowledge.",
     benefits: [
       "Reduce errors in financial and data analysis",
       "Save time on creating and maintaining complex spreadsheets",
-      "Empower non-technical team members to work with data effectively"
+      "Empower non-technical team members to work with data effectively",
     ],
-    image: "https://v0.blob.com/formula-building.png"
+    image: "https://v0.blob.com/formula-building.png",
   },
   {
     id: "automation",
     icon: Zap,
     title: "Workflow Automation",
-    description: "Streamline your business processes with powerful, easy-to-setup automation. Connect your favorite tools and let AvenCRM do the heavy lifting.",
+    description:
+      "Streamline your business processes with powerful, easy-to-setup automation. Connect your favorite tools and let AvenCRM do the heavy lifting.",
     benefits: [
       "Automate up to 80% of repetitive tasks",
       "Reduce human error in data entry and transfer",
-      "Increase team productivity by focusing on high-value activities"
+      "Increase team productivity by focusing on high-value activities",
     ],
-    image: "https://v0.blob.com/workflow-automation.png"
-  }
+    image: "https://v0.blob.com/workflow-automation.png",
+  },
 ]
 
 export function FeaturesSection() {
   const [activeFeature, setActiveFeature] = useState<string>(features[0].id)
   const [isChanging, setIsChanging] = useState(false)
 
-  const handleFeatureChange = useCallback((id: string) => {
-    if (id !== activeFeature) {
-      setIsChanging(true)
-      setTimeout(() => {
-        setActiveFeature(id)
-        setIsChanging(false)
-      }, 300)
-    }
-  }, [activeFeature])
+  const handleFeatureChange = useCallback(
+    (id: string) => {
+      if (id !== activeFeature) {
+        setIsChanging(true)
+        setTimeout(() => {
+          setActiveFeature(id)
+          setIsChanging(false)
+        }, 300)
+      }
+    },
+    [activeFeature],
+  )
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
         e.preventDefault()
-        const currentIndex = features.findIndex(f => f.id === activeFeature)
+        const currentIndex = features.findIndex((f) => f.id === activeFeature)
         let newIndex
-        if (e.key === 'ArrowDown') {
+        if (e.key === "ArrowDown") {
           newIndex = (currentIndex + 1) % features.length
         } else {
           newIndex = (currentIndex - 1 + features.length) % features.length
@@ -94,8 +103,8 @@ export function FeaturesSection() {
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown)
-    return () => window.removeEventListener('keydown', handleKeyDown)
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
   }, [activeFeature, handleFeatureChange])
 
   return (
@@ -105,7 +114,7 @@ export function FeaturesSection() {
           <span className="text-sm font-medium text-[#6f6c90] tracking-tight">FEATURES</span>
         </motion.div>
         <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-center text-gray-900">
-          Powerful Features to Supercharge Your Workflow
+          Features, supercharge workflow
         </h2>
         {/* <p className="text-xl text-gray-600 text-center mb-16 max-w-3xl mx-auto">
           Discover how AvenCRM's cutting-edge features can transform your business operations, boost productivity, and drive growth.
@@ -114,13 +123,13 @@ export function FeaturesSection() {
           {/* Left Column - Feature List with Dropdowns */}
           <div className="space-y-4">
             {features.map((feature) => {
-              const isActive = feature.id === activeFeature;
+              const isActive = feature.id === activeFeature
               return (
                 <motion.div
                   key={feature.id}
                   initial={false}
-                  animate={{ 
-                    backgroundColor: isActive ? 'rgba(59, 130, 246, 0.02)' : 'transparent',
+                  animate={{
+                    backgroundColor: isActive ? "rgba(59, 130, 246, 0.02)" : "transparent",
                   }}
                   className="border-b border-gray-100 last:border-b-0"
                 >
@@ -130,21 +139,46 @@ export function FeaturesSection() {
                     aria-expanded={isActive}
                     aria-controls={`feature-description-${feature.id}`}
                   >
-                    <h3 className={`text-xl font-semibold ${isActive ? 'text-gray-900' : 'text-gray-600'} group-hover:text-gray-900 transition-colors`}>
+                    <h3
+                      className={`text-xl font-semibold ${isActive ? "text-gray-900" : "text-gray-600"} group-hover:text-gray-900 transition-colors`}
+                    >
                       {feature.title}
                     </h3>
-                    <ChevronRight className={`w-4 h-4 transition-transform duration-300 ease-out ${isActive ? 'rotate-90 text-gray-900' : 'text-gray-400'}`} />
+                    <ChevronRight
+                      className={`w-4 h-4 transition-transform duration-300 ease-out ${isActive ? "rotate-90 text-gray-900" : "text-gray-400"}`}
+                    />
                   </button>
                   <AnimatePresence>
                     {isActive && (
                       <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
+                        animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.2, ease: 'easeOut' }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
                         className="px-6 pb-6 space-y-4"
                       >
                         <p className="text-gray-600 text-lg leading-relaxed">{feature.description}</p>
+                        <div className="lg:hidden lg:items-center lg:justify-center">
+                          <AnimatePresence mode="wait">
+                            {!isChanging && (
+                              <motion.div
+                                key={activeFeature}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                                className="relative w-full max-w-md aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-lg"
+                              >
+                                <Image
+                                  src={features.find((f) => f.id === activeFeature)?.image || "/placeholder.svg"}
+                                  alt={`${activeFeature} preview`}
+                                  fill
+                                  className="object-cover"
+                                />
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
+                        </div>
                         {/* <ul className="space-y-3">
                           {feature.benefits.map((benefit, index) => (
                             <li key={index} className="flex items-start gap-3">
@@ -169,12 +203,12 @@ export function FeaturesSection() {
                     )}
                   </AnimatePresence>
                 </motion.div>
-              );
+              )
             })}
           </div>
 
           {/* Right Column - Feature Preview */}
-          <div className="lg:flex lg:items-center lg:justify-center">
+          <div className="hidden lg:flex lg:items-center lg:justify-center">
             <AnimatePresence mode="wait">
               {!isChanging && (
                 <motion.div
@@ -186,7 +220,7 @@ export function FeaturesSection() {
                   className="relative w-full max-w-md aspect-video rounded-2xl overflow-hidden bg-gray-100 shadow-lg"
                 >
                   <Image
-                    src={features.find(f => f.id === activeFeature)?.image || "/placeholder.svg"}
+                    src={features.find((f) => f.id === activeFeature)?.image || "/placeholder.svg"}
                     alt={`${activeFeature} preview`}
                     fill
                     className="object-cover"
@@ -197,22 +231,10 @@ export function FeaturesSection() {
           </div>
         </div>
 
-        {/* Progress Indicator */}
-        <div className="mt-16 flex justify-center space-x-2">
-          {features.map((feature, index) => (
-            <motion.button
-              key={feature.id}
-              className={`h-3 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50`}
-              initial={false}
-              animate={{ 
-                width: feature.id === activeFeature ? '2rem' : '0.75rem',
-                backgroundColor: feature.id === activeFeature ? '#2563EB' : '#E5E7EB'
-              }}
-              transition={{ duration: 0.3 }}
-              onClick={() => handleFeatureChange(feature.id)}
-              aria-label={`View ${feature.title} feature`}
-            />
-          ))}
+        <div className="mt-4 flex justify-center lg:justify-end">
+          <Button variant="outline" size="lg" className="rounded-full">
+            View All Features
+          </Button>
         </div>
       </div>
     </section>
