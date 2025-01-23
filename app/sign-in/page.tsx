@@ -11,6 +11,23 @@ export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const handleSignIn = async () => {
+    try {
+      const response = await fetch('https://backend.avencrm.com/auth/sign-in', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+        credentials: 'include'
+      });
+      const data = await response.json();
+      console.log('Sign in response:', data);
+    } catch (error) {
+      console.error('Sign in error:', error);
+    }
+  }
+
   return (
     <div className="min-h-screen w-full flex">
       {/* Left Side - Form */}
@@ -69,6 +86,7 @@ export default function SignIn() {
               </div>
               <Button 
                 className="w-full h-12 text-base bg-[#00A0A0] hover:bg-[#008080]"
+                onClick={handleSignIn}
               >
                 Sign in
               </Button>
@@ -122,4 +140,3 @@ export default function SignIn() {
     </div>
   )
 }
-
