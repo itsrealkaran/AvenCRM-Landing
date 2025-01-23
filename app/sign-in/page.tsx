@@ -17,6 +17,7 @@ export default function SignIn() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.e30.XmNK3GpH3Ys_7wsYBfq4C3M6goz71I7dTgUkuIa5lyQ'
         },
         body: JSON.stringify({ email, password }),
         credentials: 'include'
