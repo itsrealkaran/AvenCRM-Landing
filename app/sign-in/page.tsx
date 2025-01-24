@@ -1,50 +1,30 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { motion } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
+import Logo from "@/components/logo"
 
 export default function SignIn() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSignIn = async () => {
-    try {
-      const response = await fetch('https://backend.avencrm.com/auth/sign-in', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiJ9.e30.XmNK3GpH3Ys_7wsYBfq4C3M6goz71I7dTgUkuIa5lyQ'
-        },
-        body: JSON.stringify({ email, password }),
-        credentials: 'include'
-      });
-      const data = await response.json();
-      console.log('Sign in response:', data);
-    } catch (error) {
-      console.error('Sign in error:', error);
-    }
-  }
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
   return (
-    <div className="min-h-screen w-full flex">
+    <div className="min-h-screen w-full flex bg-gradient-to-br from-[#9BF3F0] via-[#DAFFED] to-[#FFC2B4]">
       {/* Left Side - Form */}
-      <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col justify-center">
+      <div className="w-full lg:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col justify-center bg-white">
         <div className="max-w-md mx-auto w-full">
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center">
-              <div className="w-8 h-8">
-                <svg viewBox="0 0 32 32" className="w-full h-full">
-                  <path
-                    fill="#00A0A0"
-                    d="M16 0C7.163 0 0 7.163 0 16s7.163 16 16 16 16-7.163 16-16S24.837 0 16 0zm0 24c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"
-                  />
-                </svg>
+              <div className="text-[1.6rem] md:text-[2rem]">
+                <Logo />
               </div>
-              <span className="ml-2 text-xl font-semibold">AvenCRM</span>
+              <div className="text-[#5932ea] text-[1rem] md:text-[1.3rem] flex gap-[2px] items-end font-bold">
+                <h1>AvenCRM</h1>
+              </div>
             </Link>
           </div>
 
@@ -55,10 +35,8 @@ export default function SignIn() {
             className="space-y-6"
           >
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">Welcome back</h1>
-              <p className="text-gray-500">
-                Sign in to your account to continue.
-              </p>
+              <h1 className="text-3xl font-bold tracking-tight text-gray-900">Welcome back</h1>
+              <p className="text-gray-500">Sign in to your account to continue.</p>
             </div>
 
             <div className="space-y-4">
@@ -81,32 +59,27 @@ export default function SignIn() {
                 />
               </div>
               <div className="flex justify-between items-center">
-                <Link href="/forgot-password" className="text-sm text-[#00A0A0] hover:underline">
+                <Link href="/forgot-password" className="text-sm text-[#5932EA] hover:underline">
                   Forgot password?
                 </Link>
               </div>
-              <Button 
-                className="w-full h-12 text-base bg-[#00A0A0] hover:bg-[#008080]"
-                onClick={handleSignIn}
-              >
-                Sign in
-              </Button>
+              <Button className="w-full h-12 text-base bg-[#5932EA] hover:bg-[#4A2BC2] text-white">Sign in</Button>
             </div>
 
             <div className="text-center text-sm text-gray-500">
               By proceeding, you agree to our{" "}
-              <Link href="/terms" className="text-[#00A0A0] hover:underline">
+              <Link href="/terms" className="text-[#5932EA] hover:underline">
                 Terms of Service
               </Link>{" "}
               and{" "}
-              <Link href="/privacy" className="text-[#00A0A0] hover:underline">
+              <Link href="/privacy" className="text-[#5932EA] hover:underline">
                 Privacy Policy
               </Link>
             </div>
 
             <div className="text-center text-sm">
               Don't have an account?{" "}
-              <Link href="/sign-up" className="text-[#00A0A0] hover:underline font-medium">
+              <Link href="/sign-up" className="text-[#5932EA] hover:underline font-medium">
                 Sign up
               </Link>
             </div>
@@ -115,7 +88,7 @@ export default function SignIn() {
       </div>
 
       {/* Right Side - Illustration */}
-      <div className="hidden lg:block lg:w-1/2 bg-[#E5F9F9] relative overflow-hidden">
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -123,9 +96,9 @@ export default function SignIn() {
           className="absolute inset-0 flex items-center justify-center p-12"
         >
           <div className="relative w-full max-w-lg">
-            <div className="absolute top-0 -left-4 w-72 h-72 bg-[#00A0A0] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-            <div className="absolute top-0 -right-4 w-72 h-72 bg-[#4A3AFF] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[#00A0A0] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+            <div className="absolute top-0 -left-4 w-72 h-72 bg-[#5932EA] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+            <div className="absolute top-0 -right-4 w-72 h-72 bg-[#9BF3F0] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+            <div className="absolute -bottom-8 left-20 w-72 h-72 bg-[#FFC2B4] rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
             <div className="relative">
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-01-10%20123655-gIB3adoiV1W28XDtGA3agAiNUDEqK4.png"
@@ -141,3 +114,4 @@ export default function SignIn() {
     </div>
   )
 }
+
