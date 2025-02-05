@@ -216,7 +216,7 @@ export default function Page() {
                 className="bg-gray-200 data-[state=checked]:bg-gradient-to-r from-blue-500 to-cyan-500"
               />
               <span className={`text-sm font-medium ${isAnnual ? 'text-gray-900' : 'text-gray-500'}`}>
-                Annually <span className="text-green-500 font-semibold">(Save 20%)</span>
+                Annually
               </span>
             </motion.div>
           </div>
