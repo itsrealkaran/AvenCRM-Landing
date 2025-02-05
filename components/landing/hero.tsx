@@ -57,7 +57,7 @@ export function Hero() {
         >
           <Button 
             onClick={() => {
-              window.location.href = 'https://crm.avencrm.com/signup';
+              window.location.href = 'https://crm.avencrm.com/sign-up';
             }}
             size="lg" 
             className="bg-black hover:bg-black/90 text-white text-lg px-8 rounded-full h-14"

@@ -174,6 +174,7 @@ const individualPlans: PricingPlan[] = [
       "Email Campaigns (500/monthly)",
       "Page Builder",
       "Meta Ads Integration",
+      "WhatsApp Campaigns",
       "AI Context Aware Search",
       "AI Email Writer",
       "AI Page Builder"
@@ -335,7 +336,7 @@ export function PricingSection() {
 
                   <Button 
                     onClick={() => {
-                      window.location.href = 'https://crm.avencrm.com/signup';
+                      window.location.href = 'https://crm.avencrm.com/sign-up';
                     }}
                     className={`mt-8 w-full h-12 rounded-full text-lg font-semibold transition-all duration-300 ${
                       plan.type === 'trial'

@@ -82,11 +82,29 @@ const features: { category: string; items: Feature[] }[] = [
         enterprise: "Enterprise + AI"
       },
       {
+        name: "WhatsApp Campaigns",
+        description: "Send WhatsApp messages to clients",
+        free: false,
+        basic: false,
+        premium: false,
+        enterprise: true
+      },
+      {
+        name: "Meta Ads Integration",
+        description: "Integrate with Meta Ads",
+        free: false,
+        basic: false,
+        premium: false,
+        enterprise: true
+      },
+      {
         name: "Email Campaigns",
         description: "Send bulk emails to clients",
         free: false,
         basic: "100/month",
+
         premium: "Non-attachment",
+
         enterprise: "500/month"
       },
       {
