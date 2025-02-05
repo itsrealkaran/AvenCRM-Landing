@@ -56,6 +56,9 @@ export function Hero() {
           variants={itemVariants}
         >
           <Button 
+            onClick={() => {
+              window.location.href = '/signup';
+            }}
             size="lg" 
             className="bg-black hover:bg-black/90 text-white text-lg px-8 rounded-full h-14"
           >

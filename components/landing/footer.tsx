@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Facebook, Instagram, Twitter, Linkedin, User2 } from 'lucide-react'
+import { Facebook, Instagram, Twitter, Linkedin, User2, Youtube } from 'lucide-react'
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -9,27 +9,27 @@ import Logo from "../logo"
 
 const footerLinks = {
   Platform: [
-    { name: "Plans & Pricing", href: "#" },
-    { name: "Personal AI Manager", href: "#" },
-    { name: "AI Business Writer", href: "#" },
+    { name: "Features", href: "/features" },
+    { name: "Pricing", href: "/pricing" },
+    { name: "Insights", href: "/insights" },
   ],
   Company: [
-    { name: "Blog", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "News", href: "#" },
+    { name: "About", href: "#" },
+    { name: "Careers", href: "/careers" },
+    { name: "Contact", href: "#" },
   ],
-  Resources: [
-    { name: "Documentation", href: "#" },
-    { name: "Papers", href: "#" },
-    { name: "Press Conferences", href: "#" },
+  Legal: [
+    { name: "Privacy Policy", href: "/privacy-policy" },
+    { name: "Terms of Service", href: "/terms-of-service" },
   ],
 }
 
 const socialLinks = [
-  { icon: Facebook, href: "#" },
-  { icon: Instagram, href: "#" },
-  { icon: Twitter, href: "#" },
-  { icon: Linkedin, href: "#" },
+  { icon: Facebook, href: "http://facebook.com/avencrm" },
+  { icon: Instagram, href: "https://instagram.com/avencrm_" },
+  // { icon: Twitter, href: "#" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/aven-crm/" },
+  { icon: Youtube, href: "https://youtube.com/@avencrm" },
 ]
 
 export function Footer() {
@@ -124,10 +124,10 @@ export function Footer() {
             <button className="hover:text-[#000000] transition-colors">
               English
             </button>
-            <Link href="#" className="hover:text-[#000000] transition-colors">
+            <Link href="/privacy-policy" className="hover:text-[#000000] transition-colors">
               Privacy
             </Link>
-            <Link href="#" className="hover:text-[#000000] transition-colors">
+            <Link href="/terms-of-service" className="hover:text-[#000000] transition-colors">
               Legal
             </Link>
           </div>

@@ -10,25 +10,30 @@ import {
 
 const faqs = [
   {
-    question: "DO YOU DO WEB DESIGN OR WEB DEVELOPMENT?",
-    answer: "We offer comprehensive real estate CRM solutions that include both web design and development services. Our team specializes in creating custom, user-friendly interfaces specifically tailored for real estate professionals, ensuring your CRM system is both visually appealing and functionally robust."
+    question: "What is AvenCRM?",
+    answer:
+      "AvenCRM is a comprehensive customer relationship management solution designed specifically for real estate professionals. It offers tools for lead management, contact organization, and task automation to streamline your real estate business operations.",
   },
   {
-    question: "I'M AN AGENCY, DO YOU DEVELOP FIGMA DESIGNS?",
-    answer: "Yes, we specialize in turning Figma designs into fully functional real estate CRM systems. Our development team is experienced in translating design specifications into responsive, interactive web applications while maintaining design fidelity and ensuring optimal performance."
+    question: "How does AvenCRM differ from other CRM systems?",
+    answer:
+      "AvenCRM is tailored for the real estate industry, offering specialized features like property listing management, client tracking, and automated marketing tools. Our platform focuses on the unique needs of real estate professionals, providing an integrated workflow that other general CRM systems may lack.",
   },
   {
-    question: "WHY DO I DEVELOP SOLELY USING YOUR CRM?",
-    answer: "Our CRM is specifically designed for real estate professionals, offering specialized features like property listing management, client tracking, and automated marketing tools. By focusing solely on our platform, you benefit from integrated workflows, consistent updates, and dedicated support tailored to the real estate industry."
+    question: "Can I customize AvenCRM to fit my specific business needs?",
+    answer:
+      "Yes, AvenCRM offers customization options to adapt to your specific business processes. Depending on your plan, you can customize fields, workflows, and reports to align with your unique requirements.",
   },
   {
-    question: "HOW MUCH DOES IT COST?",
-    answer: "We offer flexible pricing plans starting from $99/month, with options for both individual agents and large agencies. Each plan is customizable to your specific needs, and we provide transparent pricing with no hidden fees. Contact our sales team for a detailed quote based on your requirements."
+    question: "What kind of support does AvenCRM provide?",
+    answer:
+      "We offer various levels of support based on your plan. This ranges from email support for our basic plans to priority email and chat support for premium users. Our enterprise clients benefit from 24/7 phone, email, and chat support, ensuring you always have the assistance you need.",
   },
   {
-    question: "DO I NEED A DEVELOPER TO MAKE FUTURE UPDATES ON MY WEBSITE?",
-    answer: "No, our CRM platform is designed with user-friendly interfaces that allow you to make common updates without technical expertise. However, for more complex customizations, our support team and developers are available to assist you as needed."
-  }
+    question: "Is there a free trial available?",
+    answer:
+      "Yes, we offer a 14-day free trial that allows you to explore all of AvenCRM's core features. This gives you the opportunity to experience how our platform can benefit your real estate business before making a commitment.",
+  },
 ]
 
 export function FaqSection() {

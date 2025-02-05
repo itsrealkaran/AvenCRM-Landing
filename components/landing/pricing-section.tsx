@@ -28,56 +28,73 @@ const companyPlans: PricingPlan[] = [
       annually: 0
     },
     features: [
-      "All core features for 14 days",
-      "Up to 100,000 tracked visits",
-      "Basic email support",
-      "Up to 3 team members"
+      "Task Manager & Calendar",
+      "Basic Team Management",
+      "Client Management (Limited to 5)",
+      "Basic Monitoring Tools",
+      "Property Management (2 properties)",
+      "Basic Lead Management",
+      "14-day trial period"
     ],
     type: "trial"
   },
   {
-    name: "Startup",
+    name: "Basic",
     description: "For small companies and teams",
     price: {
-      monthly: 99,
-      annually: 89
+      monthly: 14,
+      annually: 9
     },
     features: [
-      "All analytics features",
-      "Up to 500,000 tracked visits",
-      "Normal support",
-      "Up to 10 team members"
+      "Task Manager & Calendar",
+      "Team Management (up to 5 members)",
+      "Client Management",
+      "Advanced Monitoring Dashboard",
+      "Property Management (5 per user)",
+      "Lead Management System",
+      "Basic Marketing Tools"
     ],
-    type: "startup"
+    type: "basic"
   },
   {
-    name: "Growth",
-    description: "For fast-growing businesses",
+    name: "Premium",
+    description: "For growing businesses",
     price: {
-      monthly: 199,
-      annually: 179
+      monthly: 26,
+      annually: 19
     },
     features: [
-      "Advanced analytics",
-      "Up to 1,000,000 tracked visits",
-      "Priority support",
-      "Up to 25 team members"
+      "All Basic features",
+      "Advanced Team Management",
+      "Unlimited Client Management",
+      "Real-time Monitoring",
+      "Property Management (15 per user)",
+      "Advanced Lead Management",
+      "Marketing Builder (Content Builder)",
+      "Email Campaigns (Non-attachment)"
     ],
-    type: "growth",
+    type: "premium",
     popular: true
   },
   {
     name: "Enterprise",
     description: "For large-scale operations",
     price: {
-      monthly: 399,
-      annually: 359
+      monthly: 41,
+      annually: 29
     },
     features: [
-      "Custom analytics solutions",
-      "Unlimited tracked visits",
-      "24/7 dedicated support",
-      "Unlimited team members"
+      "All Premium features",
+      "Unlimited Team Management",
+      "Enterprise Client Management",
+      "Advanced Monitoring & Reporting",
+      "Unlimited Property Management",
+      "Enterprise Lead Management",
+      "Email Campaigns (500/monthly)",
+      "AI Page Builder",
+      "Meta Ads Integration",
+      "AI Context Aware Search",
+      "AI Email Writer"
     ],
     type: "enterprise"
   }
@@ -92,10 +109,13 @@ const individualPlans: PricingPlan[] = [
       annually: 0
     },
     features: [
-      "Core features for 14 days",
-      "Up to 50,000 tracked visits",
-      "Email support",
-      "1 user"
+      "Task Manager & Calendar",
+      "Basic Team Management",
+      "Client Management (Limited to 3)",
+      "Basic Monitoring Tools",
+      "Property Management (1 property)",
+      "Basic Lead Management",
+      "14-day trial period"
     ],
     type: "trial"
   },
@@ -103,47 +123,62 @@ const individualPlans: PricingPlan[] = [
     name: "Basic",
     description: "For individual professionals",
     price: {
-      monthly: 49,
-      annually: 44
+      monthly: 11,
+      annually: 7
     },
     features: [
-      "Essential analytics features",
-      "Up to 100,000 tracked visits",
-      "Email support",
-      "1 user"
+      "Task Manager & Calendar",
+      "Basic Team Management",
+      "Client Management",
+      "Standard Monitoring",
+      "Property Management (5 properties)",
+      "Lead Management"
     ],
     type: "basic"
   },
   {
-    name: "Pro",
+    name: "Premium",
     description: "For power users",
     price: {
-      monthly: 99,
-      annually: 89
+      monthly: 22,
+      annually: 16
     },
     features: [
-      "Advanced analytics features",
-      "Up to 500,000 tracked visits",
-      "Priority email support",
-      "1 user"
+      "All Basic features",
+      "Advanced Team Management",
+      "Enhanced Client Management",
+      "Advanced Monitoring",
+      "Property Management (10 properties)",
+      "Advanced Lead Management",
+      "Marketing Builder",
+      "Basic Email Campaigns"
     ],
-    type: "pro",
+    type: "premium",
     popular: true
   },
   {
-    name: "Team",
-    description: "For small teams",
+    name: "Enterprise",
+    description: "For high-volume agents",
     price: {
-      monthly: 199,
-      annually: 179
+      monthly: 35,
+      annually: 26
     },
     features: [
-      "All analytics features",
-      "Up to 1,000,000 tracked visits",
-      "24/7 phone support",
-      "Up to 5 team members"
+      "All Premium features",
+      "Enterprise Team Management",
+      "Unlimited Client Management",
+      "Premium Monitoring Suite",
+      "Unlimited Property Management",
+      "Enterprise Lead Management",
+      "Advanced Marketing Builder",
+      "Email Campaigns (500/monthly)",
+      "Page Builder",
+      "Meta Ads Integration",
+      "AI Context Aware Search",
+      "AI Email Writer",
+      "AI Page Builder"
     ],
-    type: "team"
+    type: "enterprise"
   }
 ]
 
@@ -276,7 +311,7 @@ export function PricingSection() {
                         ${isAnnual ? plan.price.annually : plan.price.monthly}
                       </span>
                       <span className={`text-lg ${plan.type === 'trial' || plan.popular ? 'text-white/80' : 'text-gray-600'}`}>
-                        {plan.type === 'trial' ? '' : isAnnual ? '/year' : '/month'}
+                        {plan.type === 'trial' ? '' : isAnnual ? '/month(equivalent)' : '/month'}
                       </span>
                     </div>
                   </div>
@@ -299,6 +334,9 @@ export function PricingSection() {
                   </div>
 
                   <Button 
+                    onClick={() => {
+                      window.location.href = '/signup';
+                    }}
                     className={`mt-8 w-full h-12 rounded-full text-lg font-semibold transition-all duration-300 ${
                       plan.type === 'trial'
                         ? 'bg-white text-purple-700 hover:bg-purple-100'

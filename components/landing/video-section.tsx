@@ -34,7 +34,7 @@ export function VideoSection() {
               <video
                 className="w-full h-full rounded-lg"
                 controls
-                src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                src="/intro.mp4"
               >
                 Your browser does not support the video tag.
               </video>
