@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { Check, X, HelpCircle, Zap } from 'lucide-react'
 import { Switch } from "@/components/ui/switch"
@@ -102,9 +102,7 @@ const features: { category: string; items: Feature[] }[] = [
         description: "Send bulk emails to clients",
         free: false,
         basic: "100/month",
-
         premium: "Non-attachment",
-
         enterprise: "500/month"
       },
       {
@@ -148,22 +146,84 @@ const features: { category: string; items: Feature[] }[] = [
   }
 ]
 
+const getUserLocation = async () => {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    
+    const middleEastCountries = ['AE', 'SA', 'BH', 'OM', 'QA', 'KW', 'IN'];
+    const northAmericaCountries = ['CA'];
+    
+    if (middleEastCountries.includes(data.country_code)) {
+      return 'AED';
+    } else if (northAmericaCountries.includes(data.country_code)) {
+      return 'CAD';
+    }
+    
+    return 'USD';
+  } catch (error) {
+    console.error('Error fetching location:', error);
+    return 'USD';
+  }
+};
+
+const getCurrencySymbol = (currency: string) => {
+  switch(currency) {
+    case 'CAD':
+      return 'C$';
+    case 'AED':
+      return 'AED';
+    default:
+      return '$';
+  }
+};
+
 export default function Page() {
   const [isAnnual, setIsAnnual] = useState(true)
   const [isIndividual, setIsIndividual] = useState(false)
+  const [currency, setCurrency] = useState('USD')
+  const [currencySymbol, setCurrencySymbol] = useState('$')
 
   const prices = {
     individual: {
-      basic: { monthly: 11, annually: 7 },
-      premium: { monthly: 22, annually: 16 },
-      enterprise: { monthly: 35, annually: 26 }
+      basic: { 
+        monthly: { USD: 11, CAD: 15, AED: 40 },
+        annually: { USD: 7, CAD: 10, AED: 26 }
+      },
+      premium: { 
+        monthly: { USD: 22, CAD: 30, AED: 70 },
+        annually: { USD: 16, CAD: 22, AED: 52 }
+      },
+      enterprise: { 
+        monthly: { USD: 35, CAD: 50, AED: 120 },
+        annually: { USD: 26, CAD: 35, AED: 85 }
+      }
     },
     company: {
-      basic: { monthly: 14, annually: 9 },
-      premium: { monthly: 26, annually: 19 },
-      enterprise: { monthly: 41, annually: 29 }
+      basic: { 
+        monthly: { USD: 14, CAD: 20, AED: 51 },
+        annually: { USD: 9, CAD: 13, AED: 33 }
+      },
+      premium: { 
+        monthly: { USD: 26, CAD: 37, AED: 95 },
+        annually: { USD: 19, CAD: 27, AED: 70 }
+      },
+      enterprise: { 
+        monthly: { USD: 41, CAD: 59, AED: 150 },
+        annually: { USD: 29, CAD: 42, AED: 105 }
+      }
     }
   }
+
+  useEffect(() => {
+    const detectLocation = async () => {
+      const detectedCurrency = await getUserLocation();
+      setCurrency(detectedCurrency);
+      setCurrencySymbol(getCurrencySymbol(detectedCurrency));
+    };
+
+    detectLocation();
+  }, []);
 
   const currentPrices = isIndividual ? prices.individual : prices.company
 
@@ -252,27 +312,33 @@ export default function Page() {
                     <th className="text-left p-8 min-w-[200px]">Features</th>
                     <th className="p-8 text-center w-[200px]">
                       <div className="mb-2 text-lg font-medium">Free Trial</div>
-                      <div className="text-4xl font-bold mb-2">$0</div>
+                      <div className="text-4xl font-bold mb-2">NA</div>
                       <div className="text-sm text-gray-500 mb-6">14 days</div>
                     </th>
                     <th className="p-8 text-center w-[200px]">
                       <div className="mb-2 text-lg font-medium">Basic</div>
                       <div className="text-4xl font-bold mb-2">
-                        ${isAnnual ? currentPrices.basic.annually : currentPrices.basic.monthly}
+                        {currencySymbol}{isAnnual 
+                          ? currentPrices.basic.annually[currency] 
+                          : currentPrices.basic.monthly[currency]}
                       </div>
                       <div className="text-sm text-gray-500 mb-6">per agent/month</div>
                     </th>
                     <th className="p-8 text-center w-[200px] relative bg-gradient-to-br from-blue-50 to-cyan-50">
                       <div className="mb-2 text-lg font-medium">Premium</div>
                       <div className="text-4xl font-bold mb-2 text-blue-600">
-                        ${isAnnual ? currentPrices.premium.annually : currentPrices.premium.monthly}
+                        {currencySymbol}{isAnnual 
+                          ? currentPrices.premium.annually[currency] 
+                          : currentPrices.premium.monthly[currency]}
                       </div>
                       <div className="text-sm text-gray-500 mb-6">per agent/month</div>
                     </th>
                     <th className="p-8 text-center w-[200px]">
                       <div className="mb-2 text-lg font-medium">Enterprise</div>
                       <div className="text-4xl font-bold mb-2">
-                        ${isAnnual ? currentPrices.enterprise.annually : currentPrices.enterprise.monthly}
+                        {currencySymbol}{isAnnual 
+                          ? currentPrices.enterprise.annually[currency] 
+                          : currentPrices.enterprise.monthly[currency]}
                       </div>
                       <div className="text-sm text-gray-500 mb-6">per agent/month</div>
                     </th>

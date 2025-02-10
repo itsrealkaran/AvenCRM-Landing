@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Check, Zap } from 'lucide-react'
 import { Switch } from "@/components/ui/switch"
@@ -13,6 +13,10 @@ interface PricingPlan {
   price: {
     monthly: number
     annually: number
+    cadMonthly: number
+    cadAnnually: number
+    aedMonthly: number
+    aedAnnually: number
   }
   features: string[]
   type: string
@@ -25,7 +29,11 @@ const companyPlans: PricingPlan[] = [
     description: "Perfect for testing the waters",
     price: {
       monthly: 0,
-      annually: 0
+      annually: 0,
+      cadMonthly: 0,
+      cadAnnually: 0,
+      aedMonthly: 0,
+      aedAnnually: 0,
     },
     features: [
       "Task Manager & Calendar",
@@ -43,7 +51,11 @@ const companyPlans: PricingPlan[] = [
     description: "For small companies and teams",
     price: {
       monthly: 14,
-      annually: 9
+      annually: 9,
+      cadMonthly: 20,
+      cadAnnually: 13,
+      aedMonthly: 51,
+      aedAnnually: 33,
     },
     features: [
       "Task Manager & Calendar",
@@ -61,7 +73,11 @@ const companyPlans: PricingPlan[] = [
     description: "For growing businesses",
     price: {
       monthly: 26,
-      annually: 19
+      annually: 19,
+      cadMonthly: 37,
+      cadAnnually: 27,
+      aedMonthly: 95,
+      aedAnnually: 70,
     },
     features: [
       "All Basic features",
@@ -81,7 +97,11 @@ const companyPlans: PricingPlan[] = [
     description: "For large-scale operations",
     price: {
       monthly: 41,
-      annually: 29
+      annually: 29,
+      cadMonthly: 59,
+      cadAnnually: 42,
+      aedMonthly: 150,
+      aedAnnually: 105,
     },
     features: [
       "All Premium features",
@@ -106,7 +126,11 @@ const individualPlans: PricingPlan[] = [
     description: "Try all features risk-free",
     price: {
       monthly: 0,
-      annually: 0
+      annually: 0,
+      cadMonthly: 0,
+      cadAnnually: 0,
+      aedMonthly: 0,
+      aedAnnually: 0,
     },
     features: [
       "Task Manager & Calendar",
@@ -124,7 +148,11 @@ const individualPlans: PricingPlan[] = [
     description: "For individual professionals",
     price: {
       monthly: 11,
-      annually: 7
+      annually: 7,
+      cadMonthly: 15,
+      cadAnnually: 10,
+      aedMonthly: 38,
+      aedAnnually: 25,
     },
     features: [
       "Task Manager & Calendar",
@@ -141,7 +169,11 @@ const individualPlans: PricingPlan[] = [
     description: "For power users",
     price: {
       monthly: 22,
-      annually: 16
+      annually: 16,
+      cadMonthly: 30,
+      cadAnnually: 22,
+      aedMonthly: 70,
+      aedAnnually: 52,
     },
     features: [
       "All Basic features",
@@ -161,7 +193,11 @@ const individualPlans: PricingPlan[] = [
     description: "For high-volume agents",
     price: {
       monthly: 35,
-      annually: 26
+      annually: 26,
+      cadMonthly: 50,
+      cadAnnually: 35,
+      aedMonthly: 120,
+      aedAnnually: 85,
     },
     features: [
       "All Premium features",
@@ -206,9 +242,66 @@ const itemVariants = {
   }
 }
 
+const getUserLocation = async () => {
+  try {
+    const response = await fetch('https://ipapi.co/json/');
+    const data = await response.json();
+    console.log(data);
+    
+    // Map regions to our supported currencies
+    const middleEastCountries = ['AE', 'SA', 'BH', 'OM', 'QA', 'KW', 'IN'];
+    const northAmericaCountries = ['CA'];
+    
+    if (middleEastCountries.includes(data.country_code)) {
+      return 'AED';
+    } else if (northAmericaCountries.includes(data.country_code)) {
+      return 'CAD';
+    }
+    
+    return 'USD'; // Default currency
+  } catch (error) {
+    console.error('Error fetching location:', error);
+    return 'USD'; // Default to USD if there's an error
+  }
+};
+
+const getCurrencySymbol = (currency: string) => {
+  switch(currency) {
+    case 'CAD':
+      return 'C$';
+    case 'AED':
+      return 'AED';
+    default:
+      return '$';
+  }
+};
+
+const getPriceForCurrency = (prices: any, currency: string, isAnnual: boolean) => {
+  switch(currency) {
+    case 'CAD':
+      return isAnnual ? prices.cadAnnually : prices.cadMonthly;
+    case 'AED':
+      return isAnnual ? prices.aedAnnually : prices.aedMonthly;
+    default:
+      return isAnnual ? prices.annually : prices.monthly;
+  }
+};
+
 export function PricingSection() {
   const [isAnnual, setIsAnnual] = useState(true)
   const [isIndividual, setIsIndividual] = useState(false)
+  const [currency, setCurrency] = useState('USD')
+  const [currencySymbol, setCurrencySymbol] = useState('$')
+
+  useEffect(() => {
+    const detectLocation = async () => {
+      const detectedCurrency = await getUserLocation();
+      setCurrency(detectedCurrency);
+      setCurrencySymbol(getCurrencySymbol(detectedCurrency));
+    };
+
+    detectLocation();
+  }, []);
 
   const plans = isIndividual ? individualPlans : companyPlans
 
@@ -307,13 +400,9 @@ export function PricingSection() {
                     <p className={`text-sm mb-4 ${plan.type === 'trial' || plan.popular ? 'text-white/80' : 'text-gray-600'}`}>
                       {plan.description}
                     </p>
-                    <div className="flex items-baseline gap-1">
-                      <span className="text-5xl font-bold">
-                        ${isAnnual ? plan.price.annually : plan.price.monthly}
-                      </span>
-                      <span className={`text-lg ${plan.type === 'trial' || plan.popular ? 'text-white/80' : 'text-gray-600'}`}>
-                        {plan.type === 'trial' ? '' : isAnnual ? '/month(equivalent)' : '/month'}
-                      </span>
+                    <div className="text-3xl font-bold mb-2">
+                      {currencySymbol}{getPriceForCurrency(plan.price, currency, isAnnual)}
+                      <span className={`text-base font-normal ${plan.type === 'trial' || plan.popular ? 'text-white/80' : 'text-gray-600'}`}>/agent/month</span>
                     </div>
                   </div>
                   
