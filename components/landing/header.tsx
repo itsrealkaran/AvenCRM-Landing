@@ -132,7 +132,7 @@ export function Header({ currentPage = "home" }: { currentPage?: string }) {
                 </Link>
                 <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
                   <Link
-                    href="/sign-in"
+                    href="https://crm.avencrm.com/sign-in"
                     className="block text-sm font-medium text-gray-800 hover:text-black transition-colors"
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -149,7 +149,7 @@ export function Header({ currentPage = "home" }: { currentPage?: string }) {
                     className="w-full bg-[#9BF3F0] hover:bg-[#9BF3F0]/80 text-[#333333] rounded-full"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    <Link href="/sign-up">Request a Demo</Link>
+                    <Link href="https://crm.avencrm.com/sign-up">Request a Demo</Link>
                   </Button>
                 </motion.div>
               </div>
