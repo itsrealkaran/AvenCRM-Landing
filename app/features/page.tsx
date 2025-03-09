@@ -28,7 +28,7 @@ const features: Feature[] = [
       "Meeting scheduling",
       "Task dependencies tracking"
     ],
-    image: "/features/task-calendar.jpg"
+    image: "/features/tasks.png"
   },
   {
     id: "feature2",
@@ -41,7 +41,7 @@ const features: Feature[] = [
       "Resource allocation",
       "Team communication tools"
     ],
-    image: "/features/team-management.jpg"
+    image: "/features/team-manager.png"
   },
   {
     id: "feature3",
@@ -54,7 +54,7 @@ const features: Feature[] = [
       "Client segmentation",
       "Communication tracking"
     ],
-    image: "/features/client-management.jpg"
+    image: "/features/deals.png"
   },
   {
     id: "feature4",
@@ -67,7 +67,7 @@ const features: Feature[] = [
       "Automated rent collection",
       "Property analytics"
     ],
-    image: "/features/property-management.jpg"
+    image: "/features/property.png"
   },
   {
     id: "feature5",
@@ -80,7 +80,7 @@ const features: Feature[] = [
       "Follow-up automation",
       "Conversion tracking"
     ],
-    image: "/features/lead-management.jpg"
+    image: "/features/leads.png"
   },
   {
     id: "feature6",
@@ -93,7 +93,7 @@ const features: Feature[] = [
       "Multi-channel campaigns",
       "Performance tracking"
     ],
-    image: "/features/marketing-builder.jpg"
+    image: "/features/brochure-builder.png"
   },
   {
     id: "feature7",
@@ -106,7 +106,7 @@ const features: Feature[] = [
       "Analytics dashboard",
       "List management"
     ],
-    image: "/features/email-campaigns.jpg"
+    image: "/features/email-campaigns.png"
   },
   {
     id: "feature8",
@@ -119,7 +119,7 @@ const features: Feature[] = [
       "Custom domains",
       "Form builder"
     ],
-    image: "/features/page-builder.jpg"
+    image: "/features/page-builder.png"
   },
   {
     id: "feature9",
@@ -132,7 +132,7 @@ const features: Feature[] = [
       "Performance tracking",
       "ROI analysis"
     ],
-    image: "/features/meta-ads.jpg"
+    image: "/features/meta-ads.png"
   },
   {
     id: "feature15",
@@ -145,7 +145,7 @@ const features: Feature[] = [
       "Campaign analytics",
       "Contact list management"
     ],
-    image: "/features/whatsapp-campaigns.jpg"
+    image: "/features/whatsapp-campaigns.png"
   },
   {
     id: "feature10",
@@ -158,7 +158,7 @@ const features: Feature[] = [
       "Recent searches",
       "Search analytics"
     ],
-    image: "/features/ai-search.jpg"
+    image: "/features/ai-search.png"
   },
   {
     id: "feature11",
@@ -171,7 +171,7 @@ const features: Feature[] = [
       "Personalization",
       "Multi-language support"
     ],
-    image: "/features/ai-email.jpg"
+    image: "/features/ai-tools.png"
   },
   {
     id: "feature12",
@@ -184,7 +184,7 @@ const features: Feature[] = [
       "SEO recommendations",
       "Conversion optimization"
     ],
-    image: "/features/ai-page-builder.jpg"
+    image: "/features/ai-page-builder.png"
   },
   {
     id: "feature13",
@@ -197,7 +197,7 @@ const features: Feature[] = [
       "Data visualization",
       "Export capabilities"
     ],
-    image: "/features/monitoring.jpg"
+    image: "/features/agent-dashboard.png"
   }
 ]
 
@@ -265,7 +265,7 @@ export default function FeaturesPage() {
                           src={feature.image || "/placeholder.svg"}
                           alt={feature.title}
                           fill
-                          className="object-cover transition-transform duration-300 hover:scale-105"
+                          className="object-fill transition-transform duration-300 hover:scale-105"
                         />
                       </div>
                     </div>
