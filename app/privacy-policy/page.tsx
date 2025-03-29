@@ -107,6 +107,9 @@ export default function PrivacyPolicy() {
             <p className="mb-4 text-[#6f6c90]">If You decide to register through or otherwise grant us access to a Third-Party Social Media Service, We may collect Personal data that is already associated with Your Third-Party Social Media Service's account, such as Your name, Your email address, Your activities or Your contact list associated with that account.</p>
             <p className="mb-4 text-[#6f6c90]">You may also have the option of sharing additional information with the Company through Your Third-Party Social Media Service's account. If You choose to provide such information and Personal Data, during registration or otherwise, You are giving the Company permission to use, share, and store it in a manner consistent with this Privacy Policy.</p>
 
+            <h4 className="text-lg font-semibold mb-3">Google Workspace APIs Usage</h4>
+            <p className="mb-4 text-[#6f6c90]">We explicitly affirm that any data accessed through Google Workspace APIs is not used to develop, improve, or train generalized artificial intelligence (AI) and/or machine learning (ML) models. The data is only used for the specific purposes outlined in this Privacy Policy and in accordance with Google's API Services User Data Policy.</p>
+
             <h4 className="text-lg font-semibold mb-3">Tracking Technologies and Cookies</h4>
             <p className="mb-4 text-[#6f6c90]">We use Cookies and similar tracking technologies to track the activity on Our Service and store certain information. Tracking technologies used are beacons, tags, and scripts to collect and track information and to improve and analyze Our Service. The technologies We use may include:</p>
             <ul className="list-disc pl-6 mb-6 text-[#6f6c90] space-y-3">
